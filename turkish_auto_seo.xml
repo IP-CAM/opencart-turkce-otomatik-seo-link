@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<modification xmlns="https://github.com/vqmod/vqmod"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="https://github.com/vqmod/vqmod https://raw.githubusercontent.com/vqmod/vqmod/master/vqmod.xsd">
+   <id>Opencart 2.x Türkçe Otomatik SEO Link</id>
+   <version>1.0</version>
+   <vqmver>2.X</vqmver>
+   <author>M.Burak Kalkan - mburakkalkan@gmail.com</author>
+   <file name="admin/view/template/common/footer.tpl">
+       <operation>
+           <search position="before"><![CDATA[
+			</body>
+			]]></search>
+			<add><![CDATA[
+                <script type="text/javascript">
+                (function() {
+                    String.prototype.toSeoUrl = function() {
+                    var name = this.toString().trim();
+                    var charList = ["Ü","Ğ","İ","Ş","Ç","Ö","ü","ğ","ı","ş","ç","ö"];
+                    var replaceList = ["U","G","I","S","C","O","u","g","i","s","c","o"];
+                    var limit = name.length;
+                    for (i = 0; i < limit; i++){
+                        for(var j in charList){
+                            if (name.charAt(i) === charList[j])
+                        name = name.replace(name.charAt(i), replaceList[j]);
+                        }
+                    }
+
+                    return name.toLowerCase()
+                    .split(/\&+/).join("-ve-")
+                    .split(/[^a-z0-9]/).join("-")
+                    .split(/-+/).join("-");
+                    }
+
+                    var pname = document.getElementById('input-name1');
+                    var pseo = document.getElementById('input-keyword');
+
+                    if (pname != null && pseo != null) {
+                        pname.onchange = function () {
+                            pseo.value = pname.value.toSeoUrl();
+                        };
+                    }
+                })();
+                </script>
+			]]></add>
+       </operation>
+   </file>
+</modification>
