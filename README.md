@@ -1,5 +1,6 @@
-# Opencart 2.x vqmod için Türkçe Otomatik SEO Link Oluşturucu
+# Turkish Automatic SEO Link Builder for Opencart 2.x vqmod
 
-Ürün ve kategoriler için SEO Bağlantısını, girdiğiniz ürün veya kategori ismine göre otomatik olarak oluşturur.
+It automatically generates the SEO Link for products and categories based on the product or category name you entered.
 
-XML dosyasını vqmod/xml içerisine atın.
+Put the XML file into vqmod / xml
+
